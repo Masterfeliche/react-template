@@ -161,7 +161,7 @@ export default function Home() {
                     </div>
                     {/* Service Card 2 */}
                     <div className="text-center bg-white p-3 rounded-lg shadow-xl flex flex-col">
-                        <img src="/public/Efd Vfd pictures/PRINTA.jpg" alt="EFD Machine" className="rounded-md h-48 w-full object-cover" />
+                        <img src="/Efd Vfd pictures/PRINTA.jpg" alt="EFD Machine" className="rounded-md h-48 w-full object-cover" />
                         <h3 className="text-blue-950 text-2xl font-semibold mt-6">EFD/VEFD Machines</h3>
                         <p className="text-gray-700 mt-4 flex-grow">
                             Stay TRA compliant with our authorized EFD/VEFD machines. We provide complete sales, installation, and support.
