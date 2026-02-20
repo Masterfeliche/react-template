@@ -96,8 +96,8 @@ export default function Home() {
                     We are Eunica Technologies (T) LTD, a premier ICT solutions and consultancy company based in Tanzania. At our core, we are a dedicated team of technical experts, creative designers, and problem-solvers passionate about helping businesses succeed... We are your all-in-one partner for sales, installation, and ongoing support.
                 </p>
                 <div className="grid md:grid-cols-2 gap-4 mt-12 max-w-5xl mx-auto">
-                    <img src="./public/Laptop pictures/WhatsApp Image 2025-11-28 at 11.57.07.jpeg" alt="Office meeting" className="rounded-lg shadow-xl w-full h-[85%] object-cover" />
-                    <img src="./public/Efd Vfd pictures/74.jpg" alt="Man working on laptop" className="rounded-lg shadow-xl w-full h-[85%] object-cover" />
+                    <img src="/Laptop pictures/WhatsApp Image 2025-11-28 at 11.57.07.jpeg" alt="Office meeting" className="rounded-lg shadow-xl w-full h-[85%] object-cover" />
+                    <img src="/Efd Vfd pictures/74.jpg" alt="Man working on laptop" className="rounded-lg shadow-xl w-full h-[85%] object-cover" />
                 </div>
             </div>
 
@@ -161,7 +161,7 @@ export default function Home() {
                     </div>
                     {/* Service Card 2 */}
                     <div className="text-center bg-white p-3 rounded-lg shadow-xl flex flex-col">
-                        <img src="./public/Efd Vfd pictures/PRINTA.jpg" alt="EFD Machine" className="rounded-md h-48 w-full object-cover" />
+                        <img src="/public/Efd Vfd pictures/PRINTA.jpg" alt="EFD Machine" className="rounded-md h-48 w-full object-cover" />
                         <h3 className="text-blue-950 text-2xl font-semibold mt-6">EFD/VEFD Machines</h3>
                         <p className="text-gray-700 mt-4 flex-grow">
                             Stay TRA compliant with our authorized EFD/VEFD machines. We provide complete sales, installation, and support.
@@ -196,7 +196,7 @@ export default function Home() {
                 <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mt-16">
                     {/* Product Card 1 */}
                     <div className="text-center bg-blue-950 p-3 rounded-lg shadow-xl flex flex-col">
-                        <img src="./public/Laptop pictures/WhatsApp Image 2025-11-27 at 09.33.05.jpeg" alt="Laptops" className="rounded-md h-48 w-full object-cover" />
+                        <img src="/Laptop pictures/WhatsApp Image 2025-11-27 at 09.33.05.jpeg" alt="Laptops" className="rounded-md h-48 w-full object-cover" />
                         <h3 className="text-white text-2xl font-semibold mt-6">Computers & Laptops</h3>
                         <p className="text-gray-300 mt-4 flex-grow">
                             Brand-new laptops and desktops perfect for any business, from high-performance machines to reliable daily PCs.

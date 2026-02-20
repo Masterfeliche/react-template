@@ -75,7 +75,7 @@ export default function About() {
             {/* --- SECTION 2: SERVICES & PRODUCTS --- */}
             <div className="grid md:grid-cols-2 gap-5 bg-blue-950 p-5">
                 <div className="bg-[url(public/Efd Vfd pictures/Untitled-3.png)] bg-no-repeat bg-cover text-center rounded-lg p-12">
-                    <h1 className="cursor-target text-3xl font-bold text-white">OUR SERVICES</h1>
+                    <h1 className=" text-3xl font-bold text-white">OUR SERVICES</h1>
                     <p className="text-green-400 mt-4">
                         From EFD machine setup and CCTV installation to custom website design and on-call ICT support, we provide the expert solutions your business needs.
                     </p>
@@ -86,7 +86,7 @@ export default function About() {
                     </NavLink>
                 </div>
                 <div className="bg-[url(public/Efd Vfd pictures/Untitled-3.png)] bg-cover text-center rounded-lg p-12">
-                    <h1 className="cursor-target text-3xl font-bold text-white">OUR PRODUCTS</h1>
+                    <h1 className="text-3xl font-bold text-white">OUR PRODUCTS</h1>
                     <p className="text-green-400 mt-4">
                         We stock quality hardware, including laptops, computers, accessories, and TRA-approved EFD machines, plus custom printing for all your branding.
                     </p>
@@ -128,7 +128,7 @@ export default function About() {
                     {/* Image 1: Computers */}
                     {/* Product Card 1: Computers & Laptops */}
                     <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src=".\public\Laptop pictures\WhatsApp Image 2025-11-23 at 22.36.28 (1).jpeg" alt="Computers & Laptops" className="h-64 w-full object-cover" />
+                        <img src="/Laptop pictures/WhatsApp Image 2025-11-23 at 22.36.28 (1).jpeg" alt="Computers & Laptops" className="h-64 w-full object-cover" />
                         <div className="p-6 flex flex-col flex-grow">
                             <h3 className="text-2xl font-semibold text-blue-950">Computers & Laptops</h3>
                             <p className="text-gray-700 mt-4 flex-grow">
@@ -142,7 +142,7 @@ export default function About() {
 
                     {/* Product Card 2: Computer Accessories */}
                     <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src="public/homemade-media-6l5z2EPrnFc-unsplash.jpg" alt="Computer Accessories" className="h-64 w-full object-cover" />
+                        <img src="/homemade-media-6l5z2EPrnFc-unsplash.jpg" alt="Computer Accessories" className="h-64 w-full object-cover" />
                         <div className="p-6 flex flex-col flex-grow">
                             <h3 className="text-2xl font-semibold text-blue-950">Computer Accessories</h3>
                             <p className="text-gray-700 mt-4 flex-grow">
@@ -156,7 +156,7 @@ export default function About() {
 
                     {/* Product Card 3: EFD/VEFD Machines */}
                     <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src="public\Efd Vfd pictures\PRINTA.jpg" alt="EFD/VEFD Machines" className="h-64 w-full object-cover" />
+                        <img src="/Efd Vfd pictures/PRINTA.jpg" alt="EFD/VEFD Machines" className="h-64 w-full object-cover" />
                         <div className="p-6 flex flex-col flex-grow">
                             <h3 className="text-2xl font-semibold text-blue-950">EFD/VEFD Machines</h3>
                             <p className="text-gray-700 mt-4 flex-grow">
@@ -170,7 +170,7 @@ export default function About() {
 
                     {/* Product Card 4: CCTV Systems */}
                     <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src="public\michal-jakubowski-oQD9uq4Rd4I-unsplash.jpg" alt="CCTV Systems" className="h-64 w-full object-cover" />
+                        <img src="/michal-jakubowski-oQD9uq4Rd4I-unsplash.jpg" alt="CCTV Systems" className="h-64 w-full object-cover" />
                         <div className="p-6 flex flex-col flex-grow">
                             <h3 className="text-2xl font-semibold text-blue-950">CCTV & Surveillance</h3>
                             <p className="text-gray-700 mt-4 flex-grow">
@@ -184,7 +184,7 @@ export default function About() {
 
                     {/* Product Card 5: Graphics & Printing */}
                     <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src="./public/Graphics pictures/1764765939008.jpeg" alt="Graphics & Printing" className="h-64 w-full object-cover" />
+                        <img src="/Graphics pictures/1764765939008.jpeg" alt="Graphics & Printing" className="h-64 w-full object-cover" />
                         <div className="p-6 flex flex-col flex-grow">
                             <h3 className="text-2xl font-semibold text-blue-950">Graphics & Printing</h3>
                             <p className="text-gray-700 mt-4 flex-grow">
@@ -198,7 +198,7 @@ export default function About() {
 
                     {/* Product Card 6: Branded Apparel */}
                     <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src="./public/Graphics pictures/1764765911213.jpeg" alt="Branded Apparel" className="h-64 w-full object-cover" />
+                        <img src="/Graphics pictures/1764765911213.jpeg" alt="Branded Apparel" className="h-64 w-full object-cover" />
                         <div className="p-6 flex flex-col flex-grow">
                             <h3 className="text-2xl font-semibold text-blue-950">Branded Apparel</h3>
                             <p className="text-gray-700 mt-4 flex-grow">

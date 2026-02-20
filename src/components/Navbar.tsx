@@ -36,7 +36,7 @@ function NavBar() {
         {/* Your Logo */}
         <NavLink to="/">
           <div>
-            <img src="/public/woliul-hasan-S5GTNPVtKPI-unsplash.jpg" alt="Eunica Technologies Logo" className=" w-[50px] h-[50px] rounded-full" />
+            <img src="/woliul-hasan-S5GTNPVtKPI-unsplash.jpg" alt="Eunica Technologies Logo" className=" w-[50px] h-[50px] rounded-full" />
           </div>
         </NavLink>
 
