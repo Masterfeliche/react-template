@@ -7,6 +7,16 @@ import TargetCursor from "../components/TargetCursor";
 export default function About() {
     return (
         <>
+
+         {/* the target cursor import */}
+            <div>
+                <TargetCursor
+                    spinDuration={2}
+                    hideDefaultCursor
+                    parallaxOn
+                    hoverDuration={0.2}
+                />
+            </div>
            {/* --- SECTION 1: HERO --- */}
 <div className="relative w-full min-h-[600px] bg-blue-950 flex items-center justify-center p-10 overflow-hidden">
     
