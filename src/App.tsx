@@ -1,34 +1,34 @@
+import { Outlet, useLocation } from "react-router-dom";
+import RouteErrorBoundary from "./components/RouteErrorBoundary";
 import NavBar from "./components/Navbar";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Products from "./pages/Products";
-import Contact from "./pages/Contact";
 import FooterBar from "./components/Footer";
-import { Route, Routes } from "react-router-dom";
+import GlobalEffects from "./components/GlobalEffects";
+import DocumentHead from "./components/DocumentHead";
+import ScrollToHash from "./components/ScrollToHash";
 
-function App() {
+/**
+ * Root layout: shared chrome + outlet for matched child routes.
+ * `RouteErrorBoundary` resets when `pathname` changes so a bad page does not stick forever.
+ */
+export function AppLayout() {
+  const { pathname } = useLocation();
+
   return (
-    // 1. THIS IS THE PARENT WRAPPER
-    // It MUST have all three of these classes:
-    <div className="flex flex-col min-h-screen">
-
+    <div className="flex min-h-screen flex-col bg-white transition-colors dark:bg-slate-950">
+      <DocumentHead />
+      <ScrollToHash />
+      <GlobalEffects />
       <NavBar />
-
-      
-          <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/About" element={<About />} />
-              <Route path="/Services" element={<Services />} />
-              <Route path="/Products" element={<Products />} />
-              <Route path="/Contact" element={<Contact />} />
-          </Routes>
-   
-
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="relative z-0 min-h-0 w-full flex-1 pt-20 outline-none"
+      >
+        <RouteErrorBoundary pathname={pathname}>
+          <Outlet />
+        </RouteErrorBoundary>
+      </main>
       <FooterBar />
-      
     </div>
-  )
+  );
 }
-
-export default App;

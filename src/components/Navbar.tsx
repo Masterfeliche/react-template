@@ -1,91 +1,136 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import TargetCursor from "../components/TargetCursor";
-// Removed: import { BsMenuButtonWideFill } from 'react-icons/bs';
+import BrandLogo from "./BrandLogo";
+import ThemeToggle from "./ThemeToggle";
+
+const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+  `cursor-target rounded-md px-1 py-0.5 font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400 ${
+    isActive ? "text-yellow-400" : "text-gray-200 hover:text-yellow-400"
+  }`;
 
 function NavBar() {
-  const [isOpen, SetIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    SetIsOpen(!isOpen);
-
-    if (!isOpen) {
-      console.log("Menu open");
-    } else {
-      console.log("Menu closed");
-    }
-  };
+  const closeMenu = () => setIsOpen(false);
+  const toggleMenu = () => setIsOpen((open) => !open);
 
   return (
     <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-24 focus:z-[100] focus:rounded-md focus:bg-yellow-400 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-blue-950 focus:shadow-lg focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-950"
+      >
+        Skip to main content
+      </a>
+      <header className="fixed top-0 z-50 flex h-20 w-full items-center gap-3 bg-blue-950 px-4 shadow-md shadow-black/20 sm:gap-4 sm:px-6 md:px-8">
+        <BrandLogo />
 
-      {/* the target cursor import */}
-      <div>
-        <TargetCursor
-          spinDuration={2}
-          hideDefaultCursor
-          parallaxOn
-          hoverDuration={0.2}
-        />
-      </div>
-      {/* --- Main Navbar Container ---
-              - Changed bg-orange-600 to bg-blue-950 to match your site's theme.
-            */}
-      <div className="relative md:fixed top-0 w-full z-50 h-20 flex justify-between items-center bg-blue-950 p-7">
+        <nav
+          className="hidden min-w-0 flex-1 flex-wrap items-center justify-end gap-x-3 gap-y-2 lg:gap-x-5 md:flex"
+          aria-label="Main"
+        >
+          <NavLink to="/" className={navLinkClass}>
+            Home
+          </NavLink>
+          <NavLink to="/about" className={navLinkClass}>
+            About
+          </NavLink>
+          <NavLink to="/services" className={navLinkClass}>
+            Services
+          </NavLink>
+          <NavLink to="/products" className={navLinkClass}>
+            Products
+          </NavLink>
+          <NavLink to="/gallery" className={navLinkClass}>
+            Gallery
+          </NavLink>
+          <NavLink to="/contact" className={navLinkClass}>
+            Contact
+          </NavLink>
+        </nav>
 
-        {/* Your Logo */}
-        <NavLink to="/">
-          <div>
-            <img src="/woliul-hasan-S5GTNPVtKPI-unsplash.jpg" alt="Eunica Technologies Logo" className=" w-[50px] h-[50px] rounded-full" />
-          </div>
-        </NavLink>
-
-        {/* --- Desktop Nav Links ---
-                  - Added styling to make them visible and interactive.
-                */}
-        <div className="hidden md:flex justify-between w-[60%]">
-          <NavLink to="/" className="cursor-target text-gray-200 hover:text-yellow-400 font-medium transition-colors">Home</NavLink>
-          <NavLink to="/About" className="cursor-target text-gray-200 hover:text-yellow-400 font-medium transition-colors">About</NavLink>
-          <NavLink to="/Services" className="cursor-target text-gray-200 hover:text-yellow-400 font-medium transition-colors">Services</NavLink>
-          <NavLink to="/Products" className="cursor-target text-gray-200 hover:text-yellow-400 font-medium transition-colors">Products</NavLink>
-          <NavLink to="/Contact" className="cursor-target text-gray-200 hover:text-yellow-400 font-medium transition-colors">Contacts</NavLink>
+        <div className="ml-auto flex items-center gap-1 sm:gap-2 md:ml-0">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={toggleMenu}
+            className="inline-flex rounded-md p-2 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400 md:hidden"
+            aria-expanded={isOpen}
+            aria-controls="mobile-nav"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="h-8 w-8"
+              aria-hidden
+            >
+              {isOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              )}
+            </svg>
+          </button>
         </div>
+      </header>
 
-        {/* --- Mobile Toggle Button ---
-                  - Replaced BsMenuButtonWideFill with an inline SVG hamburger icon.
-                */}
-        <button onClick={toggleMenu} className="md:hidden text-white">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-        </button>
-
-      </div>
-
-
-      {/* --- Mobile Menu Dropdown ---
-              - Changed bg-orange-600 to bg-blue-950.
-              - Added a hover effect (hover:bg-blue-800).
-            */}
       {isOpen && (
-        <div className="flex flex-col md:hidden bg-blue-950 w-full">
-
-          <NavLink to="/" onClick={toggleMenu} className="p-4 text-white hover:bg-blue-800 transition-colors">Home</NavLink>
-          <NavLink to="/About" onClick={toggleMenu} className="p-4 text-white hover:bg-blue-800 transition-colors">About</NavLink>
-          <NavLink to="/Services" onClick={toggleMenu} className="p-4 text-white hover:bg-blue-800 transition-colors">Services</NavLink>
-          <NavLink to="/Products" onClick={toggleMenu} className="p-4 text-white hover:bg-blue-800 transition-colors">Products</NavLink>
-          <NavLink to="/Contact" onClick={toggleMenu} className="p-4 text-white hover:bg-blue-800 transition-colors">Contacts</NavLink>
-
+        <div
+          id="mobile-nav"
+          className="fixed inset-x-0 top-20 z-40 flex flex-col border-t border-blue-900 bg-blue-950 shadow-lg md:hidden"
+        >
+          <NavLink
+            to="/"
+            onClick={closeMenu}
+            className="px-4 py-4 text-white hover:bg-blue-900 focus-visible:bg-blue-900 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-yellow-400"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/about"
+            onClick={closeMenu}
+            className="px-4 py-4 text-white hover:bg-blue-900 focus-visible:bg-blue-900 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-yellow-400"
+          >
+            About
+          </NavLink>
+          <NavLink
+            to="/services"
+            onClick={closeMenu}
+            className="px-4 py-4 text-white hover:bg-blue-900 focus-visible:bg-blue-900 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-yellow-400"
+          >
+            Services
+          </NavLink>
+          <NavLink
+            to="/products"
+            onClick={closeMenu}
+            className="px-4 py-4 text-white hover:bg-blue-900 focus-visible:bg-blue-900 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-yellow-400"
+          >
+            Products
+          </NavLink>
+          <NavLink
+            to="/gallery"
+            onClick={closeMenu}
+            className="px-4 py-4 text-white hover:bg-blue-900 focus-visible:bg-blue-900 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-yellow-400"
+          >
+            Gallery
+          </NavLink>
+          <NavLink
+            to="/contact"
+            onClick={closeMenu}
+            className="px-4 py-4 text-white hover:bg-blue-900 focus-visible:bg-blue-900 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-yellow-400"
+          >
+            Contact
+          </NavLink>
         </div>
       )}
-
-      {/* --- **IMPORTANT** ---
-              - Because the navbar is 'md:fixed' on desktop, it will cover
-                the top 80px (h-20) of your page content.
-              - You MUST add a top padding of 'pt-20' to your main page
-                container (in your App.js or layout file) to fix this.
-              - Example: <div className="pt-20"> ... your page content ... </div>
-            */}
     </>
   );
 }

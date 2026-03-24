@@ -1,321 +1,207 @@
 import { NavLink } from "react-router-dom";
-import Antigravity from "../components/Antigravity";
 import TrueFocus from "../components/TrueFocus";
-import TargetCursor from "../components/TargetCursor";
-// Removed: import { BsInstagram, BsFacebook } from "react-icons/bs";
+import { photos } from "../lib/assetPaths";
+import {
+  bodyLead,
+  btnOnDark,
+  btnPrimary,
+  btnSecondary,
+  cardElevated,
+  sectionSurface,
+  sectionSurfaceMuted,
+  sectionTitle,
+  textHeading,
+} from "../lib/ui";
+import { cn } from "@/lib/utils";
+
+const promoOverlay =
+  "linear-gradient(to bottom, rgba(15,23,42,0.88), rgba(15,23,42,0.82))";
+
+const GALLERY = [
+  {
+    title: "Computers & laptops",
+    image: photos.laptopAlt,
+    imageAlt: "Laptop computers",
+    body: "Business-grade laptops and desktops with local warranty support.",
+  },
+  {
+    title: "Accessories",
+    image: photos.accessories,
+    imageAlt: "Computer accessories",
+    body: "Complete your workspace with monitors, input devices, and networking.",
+  },
+  {
+    title: "EFD / VEFD",
+    image: photos.efdPrinta,
+    imageAlt: "Fiscal devices",
+    body: "Authorized fiscal hardware for compliant day-to-day trading.",
+  },
+  {
+    title: "CCTV",
+    image: photos.cctv,
+    imageAlt: "Surveillance systems",
+    body: "Visible deterrence and clear recording for your premises.",
+  },
+  {
+    title: "Printing",
+    image: photos.graphicsSample,
+    imageAlt: "Printed materials",
+    body: "Marketing and operational print for shops and offices.",
+  },
+  {
+    title: "Branded apparel",
+    image: photos.graphicsApparel,
+    imageAlt: "Team branding",
+    body: "Uniforms and branded wear for a consistent team look.",
+  },
+] as const;
+
+const TEAM = [
+  { initials: "NJ", name: "Neema Jackson", role: "Operations lead" },
+  { initials: "JJ", name: "Jackson Juma", role: "Technical lead" },
+  { initials: "MA", name: "Mwajuma Ally", role: "Client success" },
+  { initials: "SS", name: "Said Said", role: "Field services" },
+] as const;
 
 export default function About() {
-    return (
-        <>
-
-         {/* the target cursor import */}
-            <div>
-                <TargetCursor
-                    spinDuration={2}
-                    hideDefaultCursor
-                    parallaxOn
-                    hoverDuration={0.2}
-                />
-            </div>
-           {/* --- SECTION 1: HERO --- */}
-<div className="relative w-full min-h-[600px] bg-blue-950 flex items-center justify-center p-10 overflow-hidden">
-    
-    {/* 1. BACKGROUND LAYER */}
-    <div className="absolute inset-0 z-0">
-        <Antigravity
-            count={300}
-            magnetRadius={6}
-            ringRadius={7}
-            waveSpeed={0.4}
-            waveAmplitude={1}
-            particleSize={1.5}
-            lerpSpeed={0.05}
-            color="#5227FF"
-            autoAnimate
-            particleVariance={1}
-            rotationSpeed={0}
-            depthFactor={1}
-            pulseSpeed={3}
-            particleShape="capsule"
-            fieldStrength={10}
+  return (
+    <>
+      <section className="relative flex min-h-[min(100dvh,40rem)] items-center justify-center overflow-hidden px-6 py-20 sm:px-8">
+        <div
+          className="absolute inset-0 z-0 bg-blue-950 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${photos.heroOffice})` }}
+          aria-hidden
         />
-    </div>
+        <div
+          className="absolute inset-0 z-[1] bg-blue-950/82 sm:bg-blue-950/78"
+          aria-hidden
+        />
 
-    {/* 2. CONTENT LAYER */}
-    <div className="relative z-10 max-w-4xl text-center">
-        <TrueFocus 
-                    sentence="ABOUT US"
-                    manualMode={false}
-                    blurAmount={5}
-                    borderColor="#ffffff"
-                    animationDuration={0.5}
-                    pauseBetweenAnimations={1}
-                    text-white
-                />
-        {/* <h1 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-tight">
-            About Us
-        </h1> */}
-        <p className="text-white mt-6 text-lg md:text-xl leading-relaxed">
-            Welcome to Eunica Technologies, Tanzania's trusted leader in Information and Communication Technology. 
-            Since our beginning, we have been on a mission to empower businesses by providing reliable, 
-            efficient, and affordable technology solutions.
-        </p>
-        
-        <div className="flex flex-col md:flex-row justify-center gap-5 mt-10">
-            <NavLink to="/Services" className="cursor-target bg-white text-blue-700 h-12 px-8 flex items-center justify-center rounded-full font-semibold hover:bg-gray-200 transition-colors">
-                View Our Services
+        <div className="relative z-10 mx-auto max-w-4xl text-center text-white">
+          <TrueFocus
+            sentence="ABOUT US"
+            manualMode={false}
+            blurAmount={3}
+            borderColor="#FACC15"
+            animationDuration={0.5}
+            pauseBetweenAnimations={1}
+            className="justify-center text-white drop-shadow-sm"
+          />
+          <p className={`${bodyLead} mt-8 !max-w-3xl !leading-relaxed !text-gray-100`}>
+            Eunica Technologies supports Tanzanian businesses with practical ICT — from compliant
+            fiscal devices and hardware supply to software, security, and responsive support.
+          </p>
+          <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row sm:flex-wrap">
+            <NavLink to="/services" className={btnSecondary}>
+              View services
             </NavLink>
-            <NavLink to="/Contact" className="cursor-target bg-orange-400 text-white h-12 px-8 flex items-center justify-center rounded-full font-semibold hover:bg-orange-500 transition-colors">
-                Get a Free Quote
+            <NavLink to="/contact" className={btnPrimary}>
+              Request a quote
             </NavLink>
+          </div>
         </div>
-    </div>
-</div>
+      </section>
 
-            {/* --- SECTION 2: SERVICES & PRODUCTS --- */}
-            <div className="grid md:grid-cols-2 gap-5 bg-blue-950 p-5">
-                <div className="bg-[url(public/Efd Vfd pictures/Untitled-3.png)] bg-no-repeat bg-cover text-center rounded-lg p-12">
-                    <h1 className=" text-3xl font-bold text-white">OUR SERVICES</h1>
-                    <p className="text-green-400 mt-4">
-                        From EFD machine setup and CCTV installation to custom website design and on-call ICT support, we provide the expert solutions your business needs.
-                    </p>
-                    <NavLink to="/Services">
-                        <button className="cursor-target mt-6 rounded-full bg-orange-400 p-3 px-6 hover:bg-orange-500 text-white font-semibold">
-                            See All Services
-                        </button>
-                    </NavLink>
+      <div className="grid gap-5 bg-blue-950 px-6 py-8 sm:px-8 sm:py-10 md:grid-cols-2 md:gap-6">
+        <div
+          className="rounded-2xl bg-cover bg-center px-6 py-12 text-center shadow-lg sm:px-8 sm:py-14"
+          style={{ backgroundImage: `${promoOverlay}, url(${photos.promoBg})` }}
+        >
+          <h2 className="text-2xl font-bold text-white md:text-3xl">Our services</h2>
+          <p className="mt-4 leading-relaxed text-gray-200">
+            EFD setup, CCTV, websites, ICT support, and printing — delivered with clear scope and
+            timelines.
+          </p>
+          <NavLink to="/services" className={`${btnOnDark} mx-auto mt-8 inline-flex`}>
+            See all services
+          </NavLink>
+        </div>
+        <div
+          className="rounded-2xl bg-cover bg-center px-6 py-12 text-center shadow-lg sm:px-8 sm:py-14"
+          style={{ backgroundImage: `${promoOverlay}, url(${photos.promoBg})` }}
+        >
+          <h2 className="text-2xl font-bold text-white md:text-3xl">Our products</h2>
+          <p className="mt-4 leading-relaxed text-gray-200">
+            Laptops, accessories, fiscal machines, CCTV kits, and branded materials — sourced for
+            reliability.
+          </p>
+          <NavLink to="/products" className={`${btnOnDark} mx-auto mt-8 inline-flex`}>
+            View products
+          </NavLink>
+        </div>
+      </div>
+
+      <section className={sectionSurface}>
+        <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-2 md:items-center md:gap-16">
+          <div className="text-center md:text-left">
+            <h2 className={sectionTitle}>Our mission</h2>
+            <p className="mt-4 leading-relaxed text-gray-800 dark:text-slate-200">
+              To deliver dependable, end-to-end ICT services so clients can focus on growth — not on
+              troubleshooting technology.
+            </p>
+          </div>
+          <div className="text-center md:text-left">
+            <h2 className={sectionTitle}>Our vision</h2>
+            <p className="mt-4 leading-relaxed text-gray-800 dark:text-slate-200">
+              To be the most trusted ICT partner for businesses across Tanzania — known for honest
+              advice, solid execution, and accessible support.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className={sectionSurfaceMuted}>
+        <div className="mx-auto max-w-7xl">
+          <h2 className={`${sectionTitle} text-center`}>Solutions in action</h2>
+          <p className={`${bodyLead} mt-4 text-center`}>
+            Representative categories we supply and support every week.
+          </p>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {GALLERY.map((item) => (
+              <article key={item.title} className={cardElevated}>
+                <img
+                  src={item.image}
+                  alt={item.imageAlt}
+                  className="h-52 w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="flex flex-grow flex-col p-5">
+                  <h3 className={cn("text-lg", textHeading)}>{item.title}</h3>
+                  <p className="mt-2 flex-grow text-sm leading-relaxed text-gray-800 dark:text-slate-200">{item.body}</p>
+                  <NavLink to="/contact" className={`${btnOnDark} mt-6 self-start text-sm`}>
+                    Request a quote
+                  </NavLink>
                 </div>
-                <div className="bg-[url(public/Efd Vfd pictures/Untitled-3.png)] bg-cover text-center rounded-lg p-12">
-                    <h1 className="text-3xl font-bold text-white">OUR PRODUCTS</h1>
-                    <p className="text-green-400 mt-4">
-                        We stock quality hardware, including laptops, computers, accessories, and TRA-approved EFD machines, plus custom printing for all your branding.
-                    </p>
-                    <NavLink to="/Products">
-                        <button className="cursor-target mt-6 rounded-full bg-orange-400 p-3 px-6 hover:bg-orange-500 text-white font-semibold">
-                            View All Products
-                        </button>
-                    </NavLink>
-                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-blue-950 px-6 py-14 dark:bg-slate-950 sm:px-8 md:py-20">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className={`${sectionTitle} text-white dark:text-white`}>Leadership team</h2>
+          <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-gray-200">
+            Experienced leads across operations, technical delivery, and customer care — aligned on
+            one goal: reliable outcomes for your business.
+          </p>
+        </div>
+        <div className="mx-auto mt-14 grid max-w-6xl grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          {TEAM.map((m) => (
+            <div key={m.initials} className="flex flex-col items-center text-center">
+              <div
+                className="flex h-28 w-28 items-center justify-center rounded-full border-2 border-yellow-400 bg-blue-900 text-2xl font-bold text-yellow-400"
+                aria-hidden
+              >
+                {m.initials}
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-white">{m.name}</h3>
+              <p className="mt-1 text-sm text-gray-200">{m.role}</p>
             </div>
-
-            {/* --- SECTION 3: MISSION & VISION --- */}
-            <div className="w-full bg-white md:grid grid-cols-2 gap-10 p-12 md:items-center">
-                <div className="text-blue-950 text-center">
-                    <h1 className="cursor-target text-3xl font-bold">Our Mission</h1>
-                    <p className="mt-4">
-                        To provide seamless, end-to-end ICT services and support that allow our clients to focus on what they do best: running their business.
-                    </p>
-                </div>
-                <div className="text-blue-950 text-center pt-10 md:pt-0">
-                    <h1 className="cursor-target text-3xl font-bold">Our Vision</h1>
-                    <p className="mt-4">
-                        To be the most reliable and innovative ICT solutions provider, powering the growth of businesses across Tanzania.
-                    </p>
-                </div>
-            </div>
-
-            {/* --- NEW SECTION: GALLERY --- */}
-            <div className="w-full bg-white p-12">
-                <div className="text-center">
-                    <h1 className="text-3xl font-bold text-blue-950">Our Solutions in Action</h1>
-                    <p className="text-gray-700 max-w-2xl mx-auto mt-4">
-                        We provide tangible results. Here’s a glimpse of the products we supply and the services we offer.
-                    </p>
-                </div>
-                
-                {/* Image Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 max-w-7xl mx-auto">
-                    {/* Image 1: Computers */}
-                    {/* Product Card 1: Computers & Laptops */}
-                    <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src="/Laptop pictures/WhatsApp Image 2025-11-23 at 22.36.28 (1).jpeg" alt="Computers & Laptops" className="h-64 w-full object-cover" />
-                        <div className="p-6 flex flex-col flex-grow">
-                            <h3 className="text-2xl font-semibold text-blue-950">Computers & Laptops</h3>
-                            <p className="text-gray-700 mt-4 flex-grow">
-                                High-performance laptops and desktop computers for every business need, from top brands.
-                            </p>
-                            <NavLink to="/Contact" className="cursor-target bg-yellow-400 text-blue-950 h-10 w-40 mt-8 rounded-full font-semibold flex items-center justify-center hover:bg-yellow-300">
-                                Request a Quote
-                            </NavLink>
-                        </div>
-                    </div>
-
-                    {/* Product Card 2: Computer Accessories */}
-                    <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src="/homemade-media-6l5z2EPrnFc-unsplash.jpg" alt="Computer Accessories" className="h-64 w-full object-cover" />
-                        <div className="p-6 flex flex-col flex-grow">
-                            <h3 className="text-2xl font-semibold text-blue-950">Computer Accessories</h3>
-                            <p className="text-gray-700 mt-4 flex-grow">
-                                Monitors, keyboards, mice, printers, routers, and all the accessories to complete your setup.
-                            </p>
-                            <NavLink to="/Contact" className="cursor-target bg-yellow-400 text-blue-950 h-10 w-40 mt-8 rounded-full font-semibold flex items-center justify-center hover:bg-yellow-300">
-                                Request a Quote
-                            </NavLink>
-                        </div>
-                    </div>
-
-                    {/* Product Card 3: EFD/VEFD Machines */}
-                    <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src="/Efd Vfd pictures/PRINTA.jpg" alt="EFD/VEFD Machines" className="h-64 w-full object-cover" />
-                        <div className="p-6 flex flex-col flex-grow">
-                            <h3 className="text-2xl font-semibold text-blue-950">EFD/VEFD Machines</h3>
-                            <p className="text-gray-700 mt-4 flex-grow">
-                                TRA-approved EFD and VEFD machines to keep your business compliant and your sales running smoothly.
-                            </p>
-                            <NavLink to="/Contact" className="cursor-target bg-yellow-400 text-blue-950 h-10 w-40 mt-8 rounded-full font-semibold flex items-center justify-center hover:bg-yellow-300">
-                                Request a Quote
-                            </NavLink>
-                        </div>
-                    </div>
-
-                    {/* Product Card 4: CCTV Systems */}
-                    <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src="/michal-jakubowski-oQD9uq4Rd4I-unsplash.jpg" alt="CCTV Systems" className="h-64 w-full object-cover" />
-                        <div className="p-6 flex flex-col flex-grow">
-                            <h3 className="text-2xl font-semibold text-blue-950">CCTV & Surveillance</h3>
-                            <p className="text-gray-700 mt-4 flex-grow">
-                                High-definition camera kits, DVRs, and complete surveillance systems to protect your property.
-                            </p>
-                            <NavLink to="/Contact" className="cursor-target bg-yellow-400 text-blue-950 h-10 w-40 mt-8 rounded-full font-semibold flex items-center justify-center hover:bg-yellow-300">
-                                Request a Quote
-                            </NavLink>
-                        </div>
-                    </div>
-
-                    {/* Product Card 5: Graphics & Printing */}
-                    <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src="/Graphics pictures/1764765939008.jpeg" alt="Graphics & Printing" className="h-64 w-full object-cover" />
-                        <div className="p-6 flex flex-col flex-grow">
-                            <h3 className="text-2xl font-semibold text-blue-950">Graphics & Printing</h3>
-                            <p className="text-gray-700 mt-4 flex-grow">
-                                Custom business cards, banners (mabango), flyers (vipeperushi), invoice books, and receipt books.
-                            </p>
-                            <NavLink to="/Contact" className="cursor-target bg-yellow-400 text-blue-950 h-10 w-40 mt-8 rounded-full font-semibold flex items-center justify-center hover:bg-yellow-300">
-                                Request a Quote
-                            </NavLink>
-                        </div>
-                    </div>
-
-                    {/* Product Card 6: Branded Apparel */}
-                    <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src="/Graphics pictures/1764765911213.jpeg" alt="Branded Apparel" className="h-64 w-full object-cover" />
-                        <div className="p-6 flex flex-col flex-grow">
-                            <h3 className="text-2xl font-semibold text-blue-950">Branded Apparel</h3>
-                            <p className="text-gray-700 mt-4 flex-grow">
-                                Professional logos and branding on hats, polo shirts, and other apparel for a unified team look.
-                            </p>
-                            <NavLink to="/Contact" className="cursor-target bg-yellow-400 text-blue-950 h-10 w-40 mt-8 rounded-full font-semibold flex items-center justify-center hover:bg-yellow-300">
-                                Request a Quote
-                            </NavLink>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {/* --- END OF NEW SECTION --- */}
-
-
-            {/* --- SECTION 4: OUR TEAM --- */}
-            <div className="w-full bg-blue-950 p-12 md:items-center">
-                <h1 className="cursor-target text-center text-white text-3xl font-bold">
-                    OUR TEAM
-                </h1>
-                <p className="text-white p-6 max-w-3xl mx-auto text-center">
-                    Meet the dedicated professionals who make Eunica Technologies a leader in ICT. Our team of experts is passionate about technology and committed to your success.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 p-6">
-                    
-                    {/* Team Member 1 */}
-                    <div className="flex flex-col items-center">
-                        <img src="/ardy-arjun-FApOxeT2NEQ-unsplash.jpg" alt="Neema Jackson" className="rounded-full h-48 w-48 object-cover border-4 border-orange-400" />
-                        <h1 className="cursor-target text-center text-white mt-4 text-xl font-semibold">Neema Jackson</h1>
-                        <div className="flex justify-center gap-4 pt-2">
-                            {/* Replaced BsInstagram with inline SVG */}
-                            <a href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-orange-400 hover:text-orange-300">
-                                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                                </svg>
-                            </a>
-                            {/* Replaced BsFacebook with inline SVG */}
-                            <a href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor" className="text-orange-400 hover:text-orange-300">
-                                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    {/* Team Member 2 */}
-                    <div className="flex flex-col items-center">
-                        <img src="/christina-wocintechchat-com-SJvDxw0azqw-unsplash.jpg" alt="Jackson Juma" className="rounded-full h-48 w-48 object-cover border-4 border-orange-400" />
-                        <h1 className="cursor-target text-center text-white mt-4 text-xl font-semibold">Jackson Juma</h1>
-                        <div className="flex justify-center gap-4 pt-2">
-                            {/* Replaced BsInstagram with inline SVG */}
-                            <a href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-orange-400 hover:text-orange-300">
-                                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                                </svg>
-                            </a>
-                            {/* Replaced BsFacebook with inline SVG */}
-                            <a href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor" className="text-orange-400 hover:text-orange-300">
-                                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    {/* Team Member 3 */}
-                    <div className="flex flex-col items-center">
-                        <img src="/adetola-afolabi-x0A7wgQmmdk-unsplash.jpg" alt="Mwajuma Ally" className="rounded-full h-48 w-48 object-cover border-4 border-orange-400" />
-                        <h1 className="cursor-target text-center text-white mt-4 text-xl font-semibold">Mwajuma Ally</h1>
-                        <div className="flex justify-center gap-4 pt-2">
-                            {/* Replaced BsInstagram with inline SVG */}
-                            <a href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-orange-400 hover:text-orange-300">
-                                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                                </svg>
-                            </a>
-                            {/* Replaced BsFacebook with inline SVG */}
-                            <a href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor" className="text-orange-400 hover:text-orange-300">
-                                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    {/* Team Member 4 */}
-                    <div className="flex flex-col items-center">
-                        <img src="/zahir-namane-hwc7eIQiTCE-unsplash.jpg" alt="Said Said" className="rounded-full h-48 w-48 object-cover border-4 border-orange-400" />
-                        <h1 className="cursor-target text-center text-white mt-4 text-xl font-semibold">Said Said</h1>
-                        <div className="flex justify-center gap-4 pt-2">
-                            {/* Replaced BsInstagram with inline SVG */}
-                            <a href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-orange-400 hover:text-orange-300">
-                                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-
-                                </svg>
-                            </a>
-                            {/* Replaced BsFacebook with inline SVG */}
-                            <a href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor" className="text-orange-400 hover:text-orange-300">
-                                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </>
-    );
+          ))}
+        </div>
+      </section>
+    </>
+  );
 }
-

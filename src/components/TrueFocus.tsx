@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState  } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import './TrueFocus.css';
-// RefObject
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
+
 interface TrueFocusProps {
   sentence?: string;
   separator?: string;
@@ -11,6 +12,7 @@ interface TrueFocusProps {
   glowColor?: string;
   animationDuration?: number;
   pauseBetweenAnimations?: number;
+  className?: string;
 }
 
 interface FocusRect {
@@ -28,8 +30,10 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
   borderColor = 'green',
   glowColor = 'rgba(0, 255, 0, 0.6)',
   animationDuration = 0.5,
-  pauseBetweenAnimations = 1
+  pauseBetweenAnimations = 1,
+  className = ''
 }) => {
+  const reducedMotion = usePrefersReducedMotion();
   const words = sentence.split(separator);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [lastActiveIndex, setLastActiveIndex] = useState<number | null>(null);
@@ -43,17 +47,22 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
   });
 
   useEffect(() => {
-    if (!manualMode) {
-      const interval = setInterval(
-        () => {
-          setCurrentIndex(prev => (prev + 1) % words.length);
-        },
-        (animationDuration + pauseBetweenAnimations) * 1000
-      );
+    if (reducedMotion || manualMode) return;
+    const interval = setInterval(
+      () => {
+        setCurrentIndex(prev => (prev + 1) % words.length);
+      },
+      (animationDuration + pauseBetweenAnimations) * 1000
+    );
 
-      return () => clearInterval(interval);
-    }
-  }, [manualMode, animationDuration, pauseBetweenAnimations, words.length]);
+    return () => clearInterval(interval);
+  }, [
+    reducedMotion,
+    manualMode,
+    animationDuration,
+    pauseBetweenAnimations,
+    words.length
+  ]);
 
   useEffect(() => {
     if (currentIndex === null || currentIndex === -1) return;
@@ -84,8 +93,18 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
     }
   };
 
+  if (reducedMotion) {
+    return (
+      <h2
+        className={`text-center text-3xl font-bold tracking-tight md:text-4xl ${className}`}
+      >
+        {sentence.trim()}
+      </h2>
+    );
+  }
+
   return (
-    <div className="focus-container" ref={containerRef}>
+    <div className={`focus-container ${className}`} ref={containerRef}>
       {words.map((word, index) => {
         const isActive = index === currentIndex;
         return (

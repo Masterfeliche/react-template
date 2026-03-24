@@ -1,145 +1,112 @@
 import { NavLink } from "react-router-dom";
+import { photos } from "../lib/assetPaths";
+import { btnOnDark, cardElevated, sectionSurface, sectionSurfaceMuted, sectionTitle, bodyLead, textHeading } from "../lib/ui";
+import { cn } from "@/lib/utils";
+
+const CATEGORIES = [
+  {
+    title: "Computers & laptops",
+    image: photos.laptopShowcase,
+    imageAlt: "Business laptops and desktops",
+    body: "New laptops and desktops for office, retail, and education — configured for your software and workload.",
+  },
+  {
+    title: "Computer accessories",
+    image: photos.accessories,
+    imageAlt: "Keyboards, mice, and office accessories",
+    body: "Monitors, keyboards, mice, printers, routers, storage, and cabling to complete your setup.",
+  },
+  {
+    title: "EFD / VEFD machines",
+    image: photos.efdPos,
+    imageAlt: "Point of sale and fiscal devices",
+    body: "TRA-aligned fiscal devices with local support — ideal for shops, restaurants, and growing chains.",
+  },
+  {
+    title: "CCTV & surveillance",
+    image: photos.cctv,
+    imageAlt: "CCTV cameras and equipment",
+    body: "Camera kits, DVRs/NVRs, and accessories with optional professional installation.",
+  },
+  {
+    title: "Graphics & printing",
+    image: photos.graphicsSample,
+    imageAlt: "Business printing and graphics",
+    body: "Business cards, banners, flyers, invoice books, and receipt books for consistent branding.",
+  },
+  {
+    title: "Branded apparel",
+    image: photos.graphicsApparel,
+    imageAlt: "Branded clothing and uniforms",
+    body: "Logos on polos, caps, and team wear — practical branding for staff and events.",
+  },
+] as const;
 
 export default function Products() {
-    return (
-        <>
-            {/* --- SECTION 1: HERO --- */}
-            <div className="w-full min-h-[400px] bg-blue-950 md:bg-[url(/jakub-zerdzicki-kVuzH0KFs1w-unsplash.jpg)] bg-cover bg-center flex items-center justify-center p-10">
-                <div className="text-center max-w-3xl">
-                    <h1 className="text-4xl md:text-5xl font-bold text-white">
-                        Our Products
-                    </h1>
-                    <p className="text-white text-lg md:text-xl mt-6">
-                        Reliable hardware and custom branding solutions to equip your business for success.
-                    </p>
+  return (
+    <>
+      <div className="relative flex min-h-[22rem] w-full items-center justify-center overflow-hidden bg-blue-950 bg-cover bg-center px-6 py-16 sm:px-8 md:min-h-[26rem] md:py-20 md:bg-[url('/jakub-zerdzicki-kVuzH0KFs1w-unsplash.jpg')]">
+        <div className="absolute inset-0 bg-blue-950/85 md:bg-blue-950/75" aria-hidden />
+        <div className="relative z-10 mx-auto max-w-3xl px-1 text-center sm:px-0">
+          <h1 className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">Products</h1>
+          <p className="mt-6 text-lg leading-relaxed text-gray-100 md:text-xl">
+            Reliable hardware and branded materials — sourced and supported by a team that understands
+            local business needs.
+          </p>
+        </div>
+      </div>
+
+      <div className={sectionSurface}>
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className={sectionTitle}>Quality you can trust</h2>
+          <p className={`${bodyLead} mt-4`}>
+            We focus on dependable equipment and clear warranties. If you need something specific,
+            ask — we work with a wide supplier network.
+          </p>
+        </div>
+      </div>
+
+      <div className={sectionSurfaceMuted}>
+        <div className="mx-auto max-w-7xl">
+          <h2 className={`${sectionTitle} text-center`}>Product categories</h2>
+          <p className={`${bodyLead} mt-4 text-center`}>
+            Request availability, specs, or bulk pricing — we respond with honest recommendations.
+          </p>
+          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {CATEGORIES.map((c) => (
+              <article key={c.title} className={cardElevated}>
+                <img
+                  src={c.image}
+                  alt={c.imageAlt}
+                  className="h-56 w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="flex flex-grow flex-col p-6">
+                  <h3 className={cn("text-xl", textHeading)}>{c.title}</h3>
+                  <p className="mt-3 flex-grow leading-relaxed text-gray-800 dark:text-slate-200">{c.body}</p>
+                  <NavLink to="/contact" className={`${btnOnDark} mt-8 self-start`}>
+                    Request a quote
+                  </NavLink>
                 </div>
-            </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
 
-            {/* --- SECTION 2: INTRODUCTION --- */}
-            <div className="w-full bg-white p-10 md:py-20">
-                <div className="text-center max-w-3xl mx-auto">
-                    <h2 className="text-3xl font-bold text-blue-950">Quality You Can Trust</h2>
-                    <p className="text-gray-700 text-lg mt-4">
-                        At Eunica Technologies, we stock a wide range of reliable hardware from the world's leading manufacturers. We've selected the best products to ensure your business runs efficiently, securely, and professionally.
-                    </p>
-                </div>
-            </div>
-
-            {/* --- SECTION 3: PRODUCT CATEGORIES GRID --- */}
-            <div className="w-full bg-gray-100 p-10 md:p-20">
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-3xl font-bold text-blue-950">Our Product Categories</h2>
-                    <p className="text-gray-700 text-lg mt-4">
-                        Everything your business needs, all in one place.
-                    </p>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    
-                    {/* Product Card 1: Computers & Laptops */}
-                    <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src="https://placehold.co/600x400/00008B/FFFFFF?text=Computers" alt="Computers & Laptops" className="h-64 w-full object-cover" />
-                        <div className="p-6 flex flex-col flex-grow">
-                            <h3 className="text-2xl font-semibold text-blue-950">Computers & Laptops</h3>
-                            <p className="text-gray-700 mt-4 flex-grow">
-                                High-performance laptops and desktop computers for every business need, from top brands.
-                            </p>
-                            <NavLink to="/Contact" className="bg-yellow-400 text-blue-950 h-10 w-40 mt-8 rounded-full font-semibold flex items-center justify-center hover:bg-yellow-300">
-                                Request a Quote
-                            </NavLink>
-                        </div>
-                    </div>
-
-                    {/* Product Card 2: Computer Accessories */}
-                    <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src="https://placehold.co/600x400/00008B/FFFFFF?text=Accessories" alt="Computer Accessories" className="h-64 w-full object-cover" />
-                        <div className="p-6 flex flex-col flex-grow">
-                            <h3 className="text-2xl font-semibold text-blue-950">Computer Accessories</h3>
-                            <p className="text-gray-700 mt-4 flex-grow">
-                                Monitors, keyboards, mice, printers, routers, and all the accessories to complete your setup.
-                            </p>
-                            <NavLink to="/Contact" className="bg-yellow-400 text-blue-950 h-10 w-40 mt-8 rounded-full font-semibold flex items-center justify-center hover:bg-yellow-300">
-                                Request a Quote
-                            </NavLink>
-                        </div>
-                    </div>
-
-                    {/* Product Card 3: EFD/VEFD Machines */}
-                    <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src="https://placehold.co/600x400/00008B/FFFFFF?text=EFD+Machines" alt="EFD/VEFD Machines" className="h-64 w-full object-cover" />
-                        <div className="p-6 flex flex-col flex-grow">
-                            <h3 className="text-2xl font-semibold text-blue-950">EFD/VEFD Machines</h3>
-                            <p className="text-gray-700 mt-4 flex-grow">
-                                TRA-approved EFD and VEFD machines to keep your business compliant and your sales running smoothly.
-                            </p>
-                            <NavLink to="/Contact" className="bg-yellow-400 text-blue-950 h-10 w-40 mt-8 rounded-full font-semibold flex items-center justify-center hover:bg-yellow-300">
-                                Request a Quote
-                            </NavLink>
-                        </div>
-                    </div>
-
-                    {/* Product Card 4: CCTV Systems */}
-                    <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src="https://placehold.co/600x400/00008B/FFFFFF?text=CCTV" alt="CCTV Systems" className="h-64 w-full object-cover" />
-                        <div className="p-6 flex flex-col flex-grow">
-                            <h3 className="text-2xl font-semibold text-blue-950">CCTV & Surveillance</h3>
-                            <p className="text-gray-700 mt-4 flex-grow">
-                                High-definition camera kits, DVRs, and complete surveillance systems to protect your property.
-                            </p>
-                            <NavLink to="/Contact" className="bg-yellow-400 text-blue-950 h-10 w-40 mt-8 rounded-full font-semibold flex items-center justify-center hover:bg-yellow-300">
-                                Request a Quote
-                            </NavLink>
-                        </div>
-                    </div>
-
-                    {/* Product Card 5: Graphics & Printing */}
-                    <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src="https://placehold.co/600x400/00008B/FFFFFF?text=Printing" alt="Graphics & Printing" className="h-64 w-full object-cover" />
-                        <div className="p-6 flex flex-col flex-grow">
-                            <h3 className="text-2xl font-semibold text-blue-950">Graphics & Printing</h3>
-                            <p className="text-gray-700 mt-4 flex-grow">
-                                Custom business cards, banners (mabango), flyers (vipeperushi), invoice books, and receipt books.
-                            </p>
-                            <NavLink to="/Contact" className="bg-yellow-400 text-blue-950 h-10 w-40 mt-8 rounded-full font-semibold flex items-center justify-center hover:bg-yellow-300">
-                                Request a Quote
-                            </NavLink>
-                        </div>
-                    </div>
-
-                    {/* Product Card 6: Branded Apparel */}
-                    <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col border border-gray-200">
-                        <img src="https://placehold.co/600x400/00008B/FFFFFF?text=Apparel" alt="Branded Apparel" className="h-64 w-full object-cover" />
-                        <div className="p-6 flex flex-col flex-grow">
-                            <h3 className="text-2xl font-semibold text-blue-950">Branded Apparel</h3>
-                            <p className="text-gray-700 mt-4 flex-grow">
-                                Professional logos and branding on hats, polo shirts, and other apparel for a unified team look.
-                            </p>
-                            <NavLink to="/Contact" className="bg-yellow-400 text-blue-950 h-10 w-40 mt-8 rounded-full font-semibold flex items-center justify-center hover:bg-yellow-300">
-                                Request a Quote
-                            </NavLink>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            {/* --- SECTION 4: CALL TO ACTION --- */}
-            <div className="w-full bg-blue-950 p-20">
-                <div className="text-center max-w-2xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white">
-                        Don't See What You Need?
-                    </h2>
-                    <p className="text-gray-300 text-lg md:text-xl mt-6">
-                        We have a wide network of suppliers. Contact us for special orders, bulk pricing, or any other hardware and printing needs.
-                    </p>
-                    <NavLink 
-                        to="/Contact" 
-                        className="bg-yellow-400 text-blue-950 h-12 px-8 rounded-full font-semibold flex items-center justify-center w-60 mx-auto mt-10 hover:bg-yellow-300"
-                    >
-                        Contact Sales
-                    </NavLink>
-                </div>
-            </div>
-        </>
-    );
+      <div className="bg-blue-950 px-6 py-14 dark:bg-slate-950 sm:px-8 md:py-20">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className={`${sectionTitle} text-white dark:text-white`}>Need something else?</h2>
+          <p className="mt-6 text-lg leading-relaxed text-gray-200">
+            Special orders, bulk pricing, and mixed bundles are common for our clients. Describe what
+            you need and we will follow up.
+          </p>
+          <NavLink to="/contact" className={`${btnOnDark} mx-auto mt-10 min-h-12`}>
+            Contact sales
+          </NavLink>
+        </div>
+      </div>
+    </>
+  );
 }

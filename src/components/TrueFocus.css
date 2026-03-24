@@ -11,8 +11,9 @@
 
 .focus-word {
   position: relative;
-  font-size: 3rem;
+  font-size: clamp(1.75rem, 4vw + 0.75rem, 3rem);
   font-weight: 900;
+  line-height: 1.15;
   cursor: pointer;
   transition:
     filter 0.3s ease,
