@@ -5,6 +5,7 @@ import FooterBar from "./components/Footer";
 import GlobalEffects from "./components/GlobalEffects";
 import DocumentHead from "./components/DocumentHead";
 import ScrollToHash from "./components/ScrollToHash";
+import StickyWhatsApp from "./components/StickyWhatsApp";
 
 /**
  * Root layout: shared chrome + outlet for matched child routes.
@@ -29,6 +30,7 @@ export function AppLayout() {
         </RouteErrorBoundary>
       </main>
       <FooterBar />
+      <StickyWhatsApp />
     </div>
   );
 }

@@ -1,0 +1,38 @@
+@keyframes home-marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes home-marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.home-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  animation: home-marquee-left 45s linear infinite;
+}
+
+.home-marquee-track--reverse {
+  animation-name: home-marquee-right;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-marquee-track,
+  .home-marquee-track--reverse {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+}

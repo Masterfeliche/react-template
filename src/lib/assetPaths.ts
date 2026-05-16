@@ -24,4 +24,17 @@ export const photos = {
   accessories: "/homemade-media-6l5z2EPrnFc-unsplash.jpg",
   heroOffice: "/matthias-heil-znkIL3MQnvY-unsplash.jpg",
   promoBg: "/Efd_Vfd_pictures/Untitled-3.png",
+  laptopWorkspace: "/pakata-goh-Ovb-MejXjOg-unsplash.jpg",
+  servicesHero: "/joshua-reddekopp-SyYmXSDnJ54-unsplash.jpg",
+  galleryHero: "/public/mohammad-rahmani-LrxSl4ZxoRs-unsplash.jpg",
+  productsHero: "/jakub-zerdzicki-kVuzH0KFs1w-unsplash.jpg",
+  contactHero: "/pakata-goh-Ovb-MejXjOg-unsplash.jpg",
+} as const;
+
+/** Representative portraits for testimonials (stock; replace with client photos when available) */
+export const avatars = {
+  retail: "/adetola-afolabi-x0A7wgQmmdk-unsplash.jpg",
+  students: "/zahir-namane-hwc7eIQiTCE-unsplash.jpg",
+  technicians: "/christina-wocintechchat-com-SJvDxw0azqw-unsplash.jpg",
+  developers: "/kevin-ku-w7ZyuGYNpRQ-unsplash.jpg",
 } as const;
